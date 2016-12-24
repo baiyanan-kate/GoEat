@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>登录页面</title>
+
+	<!-- Import google fonts - Heading first/ text second -->
+	<link rel='stylesheet' type='text/css' href='http://fonts.useso.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />
+	<!--[if lt IE 9]>
+<link href="http://fonts.useso.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+<link href="http://fonts.useso.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+<link href="http://fonts.useso.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+<link href="http://fonts.useso.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+	<!-- Favicon and touch icons -->
+	<link rel="shortcut icon" href="assets/ico/favicon.ico" type="image/x-icon" />
+
+	<!-- Css files -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/jquery.mmenu.css" rel="stylesheet">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+	<link href="assets/css/style.min.css" rel="stylesheet">
+	<link href="assets/css/add-ons.min.css" rel="stylesheet">
+	<style>
+		footer {
+			display: none;
+		}
+	</style>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script>
+        function isEmptyObject(e) {
+            var t;
+            for (t in e)
+                return !1;
+            return !0
+        }
+        function login() {
+
+            var sellerName=document.getElementById("login_sellerName").value;
+            var sellerPassword=document.getElementById("login_password").value;
+            $.ajax({
+                type: 'post',
+                url:'http://localhost:8081/api/login_sellers',
+                data:{'sellerName':sellerName,
+                    'sellerPassword':sellerPassword},
+                success:function(data,textStatus)
+                {
+                    console.log("data:"+data);
+                    if(!isEmptyObject(data))
+                    {
+                        //在这里添加一个ajax获取用户的shopname
+
+                        console.log("sellerName："+sellerName);
+                        localStorage.setItem("sellerName",sellerName);
+
+                        $.ajax(
+                            {
+                                type: 'get',
+                                url: 'http://localhost:8081/api/shops'+localStorage.getItem('sellerName'),
+                                success: function (data, textStatus) {
+                                    if (!isEmptyObject(data)) {
+                                        localStorage.setItem("shopName",data["message"]);
+                                    }
+                                    else {
+                                        localStorage.setItem("shopName","查个毛");
+                                    }
+
+                                },
+                                error: function (data) {
+                                    console.log("error" + data)
+                                    alert(data)
+                                }
+                            });
+
+                        window.location.href="http://localhost:8081/page-open.html";
+                    }else
+                    {
+                        alert("密码输入错误！");
+                    }
+                }
+            });
+            return false
+
+        }
+
+        function checkName(){
+            //判断数据库中是否已经存在这个手机号
+            var login_sellerName=document.getElementById("login_sellerName").value;
+            var reg = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+            if(!reg.test(login_sellerName))
+            {
+                document.getElementById("login_sellerNameAlert").innerHTML="请输入正确的手机号码！";
+                return false;
+            }
+            else {
+                document.getElementById("login_sellerNameAlert").innerHTML = "";
+                $.ajax(
+                    {
+                        type: 'post',
+                        url: 'http://localhost:8081/api/checkPhone',
+                        data: {'sellerName': login_sellerName},
+                        success: function (data, textStatus) {
+                            if (isEmptyObject(data)) {
+                                document.getElementById("login_sellerNameAlert").innerHTML = "该手机号不存在！";
+                            }
+                            else {
+                                document.getElementById("login_sellerNameAlert").innerHTML = "";
+                            }
+
+                        },
+                        error: function (data) {
+                            console.log("error" + data)
+                            alert(data)
+                        }
+                    });
+                return false
+            }
+        }
+        function checkPassword(){
+            var name=document.getElementById("login_password").value;
+
+            if(isEmptyObject(name))
+            {
+                document.getElementById("login_passwordAlert").innerHTML="密码不能为空！";
+                return false;
+            }else{
+                document.getElementById("login_passwordAlert").innerHTML="";
+                return false;
+            }
+
+        }
+
+	</script>
+</head>
+
+
+<body>
+	<div class="container-fluid content">
+		<div class="row">
+			<div id="content" class="col-md-12 full">
+				<div class="row">
+					<div class="login-box">
+					
+						<div class="header">
+						卖家登录
+						</div>
+
+						<form action="" method="post" enctype="multipart/form-data" class="form-horizontal ">
+							<div class="form-group">
+								<div class="col-md-12">
+									<input type="email"  class="form-control" placeholder="手机号" onblur="checkName(this)" id="login_sellerName" name="login_sellerName">
+									<p id="login_sellerNameAlert" style="font-size:13px;color:red"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12">
+									<input type="password"  class="form-control" placeholder="密码" onblur="checkPassword(this)" id="login_password" name="login_password">
+									<p id="login_passwordAlert" style="font-size:13px;color:red"></p>
+								</div>
+							</div>
+
+							<div class="confirm">
+								<input type="checkbox" name="remember"/>
+								<label for="remember">记住我</label>
+							</div>
+
+							<div class="row">
+
+								<button type="submit" class="btn btn-lg btn-primary col-xs-12" onclick="return login()">登录</button>
+
+							</div>
+						</form>
+					
+						<a class="pull-left" href="page-login.html#">忘记密码?</a>
+						<a class="pull-right" href="page-register.html">注册!</a>
+					
+						<div class="clearfix"></div>				
+						
+					</div>
+				</div><!--/row-->
+		
+			</div>	
+			
+		</div><!--/row-->		
+
+		
+	</div><!--/container-->
+		
+		
+	<!-- start: JavaScript-->
+	<!--[if !IE]>-->
+
+			<script src="assets/js/jquery-2.1.1.min.js"></script>
+
+	<!--<![endif]-->
+
+	<!--[if IE]>
+	
+		<script src="assets/js/jquery-1.11.1.min.js"></script>
+	
+	<![endif]-->
+
+	<!--[if !IE]>-->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.1.1.min.js'>"+"<"+"/script>");
+		</script>
+
+	<!--<![endif]-->
+
+	<!--[if IE]>
+	
+		<script type="text/javascript">
+	 	window.jQuery || document.write("<script src='assets/js/jquery-1.11.1.min.js'>"+"<"+"/script>");
+		</script>
+		
+	<![endif]-->
+	<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>	
+	
+	
+	<!-- page scripts -->
+	
+	<!-- theme scripts -->
+	<script src="assets/js/SmoothScroll.js"></script>
+	<script src="assets/js/jquery.mmenu.min.js"></script>
+	<script src="assets/js/core.min.js"></script>
+	
+	<!-- inline scripts related to this page -->
+	<script src="assets/js/pages/login.js"></script>
+	
+	<!-- end: JavaScript-->
+	
+</body>
+</html>

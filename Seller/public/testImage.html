@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proton - Admin Template</title>
+
+    <!-- Import google fonts - Heading first/ text second -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.useso.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />
+    <!--[if lt IE 9]>
+    <link href="http://fonts.useso.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.useso.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.useso.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.useso.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico" type="image/x-icon" />
+
+    <!-- Css files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/jquery.mmenu.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+    <link href="assets/plugins/chosen/css/chosen.css" rel="stylesheet">
+    <link href="assets/css/style.min.css" rel="stylesheet">
+    <link href="assets/css/add-ons.min.css" rel="stylesheet">
+</head>
+
+<body>
+<img id="image"src=""/>
+<br/>
+<input type="file" onchange="selectImage(this);"/>
+<br/>
+<input type="button" onclick="uploadImage();"value="提交"/>
+<script>
+    var image = '';
+    function selectImage(file){
+        if(!file.files || !file.files[0]){
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function(evt){
+            document.getElementById('image').src = evt.target.result;
+            image = evt.target.result;
+        }
+        reader.readAsDataURL(file.files[0]);
+    }
+    function uploadImage(){
+
+        $.ajax({
+            type:'post',
+            url: 'http://localhost:8081/api/image',
+            data: {image: image},
+            success: function(data){
+
+                if(data['message'] == 'OK'){
+
+                    alert('上传成功');
+
+                }else{
+
+                    alert('上传失败');
+
+                }
+
+            },
+
+            error: function(err){
+
+                alert('网络故障');
+
+            }
+
+        });
+
+    }
+</script>
+<!-- start: JavaScript-->
+<!--[if !IE]>-->
+
+<script src="assets/js/jquery-2.1.1.min.js"></script>
+
+<!--<![endif]-->
+
+<!--[if IE]>
+
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+
+<![endif]-->
+
+<!--[if !IE]>-->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='assets/js/jquery-2.1.1.min.js'>"+"<"+"/script>");
+</script>
+
+<!--<![endif]-->
+
+<!--[if IE]>
+
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='assets/js/jquery-1.11.1.min.js'>"+"<"+"/script>");
+    </script>
+</body>
+</html>

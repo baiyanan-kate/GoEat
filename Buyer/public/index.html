@@ -1,0 +1,558 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Title  -->
+<title>Biz Onepage Business HTML Template</title>
+
+<!-- Favicon  -->
+<link rel="shortcut icon" href="img/core-img/favicon.ico">
+
+<!-- ************** All CSS Files ************** -->
+
+<!-- Style css -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Responsive css -->
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!--[if IE]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style4.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+
+<script>
+	function search() {
+		var searchContent = document.getElementById("searchText").value;
+		window.location.href="http://localhost:8080/sousuo.html?content="+searchContent+"&loginUser="+loginUser;
+        localStorage.setItem("test", "Gates");
+
+
+    }
+</script>
+
+    <script>
+		if(window.content==null){
+
+            var thisURL = document.URL;
+            var  getval =thisURL.split('?')[1];
+            var showval= getval.split("=")[1];
+            window.content = decodeURI(showval);
+		}
+		else{
+
+		}
+
+        console.log("jinlaile："+thisURL);
+    </script>
+
+<script type="text/javascript">
+    var loginUser = window.content;
+    console.log("username"+loginUser);
+angular.module('ngRouteExample', ['ngRoute'])
+.controller('CookieController', function ($scope, $http) {$http({
+    method:'get',
+    url:'http://localhost:8080/api/product/1'
+}).success(function (response) {
+    $scope.product = response.message;
+    $scope.addToCart = function (product) {
+        var username = loginUser;
+        console.log(product);
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:8080/api/cart2/'+username+","+product.productName,
+            success: function (data, textStatus) {
+                if (data['message'] == 'mei') {
+                    $.ajax({
+                        type: 'post',
+                        url: 'http://localhost:8080/api/cart',
+                        data: {
+                            'username': username,
+                            'productname': product.productName,
+                            'productImage': product.productImage,
+                            'productNum': '1',
+                            'productPrice': product.productPrice,
+                            'productCarriage': product.productCarriage
+                        },success: function (data, textStatus) {
+                            if (data['message'] == 'Successfully added') {
+                                alert("添加成功，可到购物车查看！");
+                            }
+                        }
+                    });
+                }
+                else{
+                    var num = data['message'];
+                    $.ajax({
+                        type: 'put',
+                        url: 'http://localhost:8080/api/cart2/'+username+","+product.productName+","+num,
+                        success: function (data, textStatus) {
+                            if (data['message'] == 'updated') {
+                                alert("添加成功，可到购物车查看！");
+                            }
+                        }
+                    });
+
+                }
+            }
+        });
+
+    };
+})
+})
+	.controller('BreadController', function ($scope, $http) {$http({
+    method:'get',
+    url:'http://localhost:8080/api/product/2'
+}).success(function (response) {
+        $scope.product = response.message;
+        $scope.addToCart = function (product) {
+            var username = loginUser;
+            console.log(product);
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8080/api/cart2/'+username+","+product.productName,
+                success: function (data, textStatus) {
+                    if (data['message'] == 'mei') {
+                        $.ajax({
+                            type: 'post',
+                            url: 'http://localhost:8080/api/cart',
+                            data: {
+                                'username': username,
+                                'productname': product.productName,
+                                'productImage': product.productImage,
+                                'productNum': '1',
+                                'productPrice': product.productPrice,
+                                'productCarriage': product.productCarriage
+                            },success: function (data, textStatus) {
+                                if (data['message'] == 'Successfully added') {
+                                    alert("添加成功，可到购物车查看！");
+                                }
+                            }
+                        });
+                    }
+                    else{
+                        var num = data['message'];
+                        $.ajax({
+                            type: 'put',
+                            url: 'http://localhost:8080/api/cart2/'+username+","+product.productName+","+num,
+                            success: function (data, textStatus) {
+                                if (data['message'] == 'updated') {
+                                    alert("添加成功，可到购物车查看！");
+                                }
+                            }
+                        });
+
+                    }
+                }
+            });
+
+        };
+    })
+})
+
+    .controller('CakeController', function ($scope, $http) {$http({
+        method:'get',
+        url:'http://localhost:8080/api/product/3'
+    }).success(function (response) {
+        $scope.product = response.message;
+        $scope.addToCart = function (product) {
+            var username = loginUser;
+            console.log(product);
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8080/api/cart2/'+username+","+product.productName,
+                success: function (data, textStatus) {
+                    if (data['message'] == 'mei') {
+                        $.ajax({
+                            type: 'post',
+                            url: 'http://localhost:8080/api/cart',
+                            data: {
+                                'username': username,
+                                'productname': product.productName,
+                                'productImage': product.productImage,
+                                'productNum': '1',
+                                'productPrice': product.productPrice,
+                                'productCarriage': product.productCarriage
+                            },success: function (data, textStatus) {
+                                if (data['message'] == 'Successfully added') {
+                                    alert("添加成功，可到购物车查看！");
+                                }
+                            }
+                        });
+                    }
+                    else{
+                        var num = data['message'];
+                        $.ajax({
+                            type: 'put',
+                            url: 'http://localhost:8080/api/cart2/'+username+","+product.productName+","+num,
+                            success: function (data, textStatus) {
+                                if (data['message'] == 'updated') {
+                                    alert("添加成功，可到购物车查看！");
+                                }
+                            }
+                        });
+
+                    }
+                }
+            });
+
+        };
+    })
+    })
+
+    .controller('SetMealController', function ($scope, $http) {$http({
+        method:'get',
+        url:'http://localhost:8080/api/product/5'
+    }).success(function (response) {
+        $scope.product = response.message;
+        $scope.addToCart = function (product) {
+            var username = loginUser;
+            console.log(product);
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8080/api/cart2/'+username+","+product.productName,
+                success: function (data, textStatus) {
+                    if (data['message'] == 'mei') {
+                        $.ajax({
+                            type: 'post',
+                            url: 'http://localhost:8080/api/cart',
+                            data: {
+                                'username': username,
+                                'productname': product.productName,
+                                'productImage': product.productImage,
+                                'productNum': '1',
+                                'productPrice': product.productPrice,
+                                'productCarriage': product.productCarriage
+                            },success: function (data, textStatus) {
+                                if (data['message'] == 'Successfully added') {
+                                    alert("添加成功，可到购物车查看！");
+                                }
+                            }
+                        });
+                    }
+                    else{
+                        var num = data['message'];
+                        $.ajax({
+                            type: 'put',
+                            url: 'http://localhost:8080/api/cart2/'+username+","+product.productName+","+num,
+                            success: function (data, textStatus) {
+                                if (data['message'] == 'updated') {
+                                    alert("添加成功，可到购物车查看！");
+                                }
+                            }
+                        });
+
+                    }
+                }
+            });
+
+        };
+    })
+    })
+
+
+    .controller('BeverageController', function ($scope, $http) {
+        $http({
+            method: 'get',
+            url: 'http://localhost:8080/api/product/4'
+        }).success(function (response) {
+            $scope.product = response.message;
+            $scope.addToCart = function (product) {
+                var username = loginUser;
+                console.log(product);
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8080/api/cart2/'+username+","+product.productName,
+                    success: function (data, textStatus) {
+                        if (data['message'] == 'mei') {
+                            $.ajax({
+                                type: 'post',
+                                url: 'http://localhost:8080/api/cart',
+                                data: {
+                                    'username': username,
+                                    'productname': product.productName,
+                                    'productImage': product.productImage,
+                                    'productNum': '1',
+                                    'productPrice': product.productPrice,
+                                    'productCarriage': product.productCarriage
+                                },success: function (data, textStatus) {
+                                    if (data['message'] == 'Successfully added') {
+                                        alert("添加成功，可到购物车查看！");
+                                    }
+                                }
+                            });
+                        }
+                        else{
+                            var num = data['message'];
+                            $.ajax({
+                                type: 'put',
+                                url: 'http://localhost:8080/api/cart2/'+username+","+product.productName+","+num,
+                                success: function (data, textStatus) {
+                                    if (data['message'] == 'updated') {
+                                        alert("添加成功，可到购物车查看！");
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+            };
+        })
+    })
+
+
+    .controller('TestController', function ($scope, $http) { $http({
+        method:'post',
+        url:'http://localhost:8080/api/cart',
+        data:{username:"223",productname:"大饼干",productImage:"img/binggan/binggan1.png",productNum:"2",
+            productPrice:"12",productCarriage:"免运费"
+        }
+    }).success(function(response)
+    {
+        console.log(response.message);
+    })
+
+    })
+
+
+    //这里是获取购物车
+    .controller('CartController', function ($scope, $http) { $http({
+        method:'get',
+        url:'http://localhost:8080/api/cart/'+loginUser
+    }).success(function(response)
+    {
+        $scope.deleteCart = function (name) {
+            var username=loginUser;
+            console.log(name);
+            $.ajax({
+                type: 'delete',
+                url:'http://localhost:8080/api/cart',
+                data:{'username':username,
+                    'productname':name},
+                success:function(data,textStatus)
+                {
+                    if(data['message']=='Successfully deleted')
+                    {
+                        alert("删除成功");
+                        window.location.reload();
+                    }
+                }
+            });
+        };
+        console.log(response.message);
+        if(response.message == "获取成功")
+            $scope.userCart = response.userCart;
+        else
+            $scope.userCart = null
+
+    })
+
+    })
+
+
+
+.config(function ($routeProvider) {
+    $routeProvider.
+    when('/cookie', {
+        templateUrl: 'binggan.html',
+        controller: 'CookieController'
+    }).
+    when('/bread', {
+        templateUrl: 'mianbao.html',
+        controller: 'BreadController'
+    }).
+	when('/cake', {
+        templateUrl: 'dangao.html',
+        controller: 'CakeController'
+    }).
+	when('/setMeal', {
+        templateUrl: 'taocan.html',
+        controller: 'SetMealController'
+    }).
+	when('/beverage', {
+        templateUrl: 'yinpin.html',
+        controller: 'BeverageController'
+    }).
+    when('/cart', {
+        templateUrl: 'cart.html',
+        controller: 'CartController'
+    }).
+    when('/test', {
+        templateUrl: 'cart.html',
+        controller: 'TestController'
+    }).
+    otherwise({
+        redirectTo: '/cookie'
+    });
+});
+</script>
+
+</head>
+
+<body ng-app="ngRouteExample" class="ng-scope">
+<!-- preloader start -->
+<div id="preloader"></div>
+<!-- /.end preloader -->
+
+<!-- ***************** Header Start ***************** -->
+<header class="header_area">
+	<!-- Main Header Area Start -->
+	<div class="main_header_area" id="sticky">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-2 col-xs-9">
+					<!-- Logo Area:: For better view in all device please use logo image max-width 70px -->
+					<div class="logo_area">
+						<a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-xs-12">
+					<!-- Menu Area Start -->
+					<div class="main_menu_area">
+						<div class="mainmenu">
+							<nav>
+								<ul id="nav">
+									<li>
+										<input type="text" id="searchText" placeholder="夹心蛋糕">
+									</li>
+									<li>
+										<button class="play-icon" onclick="search()">
+											<i class="glyphicon glyphicon-search"> </i></button>
+									</li>
+									<li class="current_page_item"><a href="#cookie">饼干</a></li>
+									<li><a href="#bread">面包</a></li>
+									<li><a href="#cake">蛋糕</a></li>
+									<li><a href="#beverage">饮品</a></li>
+									<li><a href="#setMeal">超值套餐</a></li>
+									<li><a href="#cart">购物车</a></li>
+								</ul>
+							</nav>
+						</div>
+
+					</div>
+					<!-- Menu Area End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Main Header Area End -->
+</header>
+<!-- ***************** Header End ***************** -->
+
+<!-- ***************** Welcome Area Start ***************** -->
+<section class="welcome_area" id="home">
+	<div class="welcome_slides">
+		<!-- Single Slide Start -->
+		<div class="single_slide" style="background-image: url(img/bg-pattern/breadcumb.jpg);">
+
+		</div>
+		<!-- Single Slide Start -->
+		<div class="single_slide" style="background-image: url(img/bg-pattern/bg-1.jpg);">
+
+		</div>
+
+	</div>
+</section>
+<!-- ************** Welcome Area End ************** -->
+
+
+<!-- ************** cookie Start 饼干************** -->
+<div ng-view="">
+</div>
+
+<!-- ************** Footer Area Start ************** -->
+<footer class="footer_area">
+	<!-- Bottom Footer Area Start -->
+	<div class="footer_bottom_area">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="footer_bottom wow fadeInDown" data-wow-delay=".2s">
+						<p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">GoEat</a></p>
+					</div>
+					<!-- Bottom Footer Copywrite Text Area End -->
+				</div>
+			</div>
+			<!-- end./ row -->
+		</div>
+		<!-- end./ container -->
+	</div>
+	<!-- Bottom Footer Area End -->
+</footer>
+<!-- ************** Footer Area End ************** -->
+
+<!-- ************** All jQuery Plugins ************** -->
+
+<!-- jQuery (necessary for all JavaScript plugins) -->
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Waypoint js -->
+<script src="js/jquery.waypoints.min.js"></script>
+
+<!-- Owl-carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+
+<!-- Ajax Contact js -->
+<script src="js/ajax-contact.js"></script>
+
+<!-- Meanmenu js -->
+<script src="js/meanmenu.js"></script>
+
+<!-- Onepage Nav js -->
+<script src="js/jquery.nav.min.js"></script>
+
+<!-- Magnific Popup js -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+
+<!-- Counterup js -->
+<script src="js/counterup.min.js"></script>
+
+<!-- Back to top js -->
+<script src="js/jquery.scrollUp.js"></script>
+
+<!-- jQuery easing js -->
+<script src="js/jquery.easing.1.3.js"></script>
+
+<!-- Sticky js -->
+<script src="js/jquery.sticky.js"></script>
+
+<!-- WOW js -->
+<script src="js/wow.min.js"></script>
+
+<!-- parallux js -->
+<script src="js/jquery.stellar.min.js"></script>
+
+<!-- YouTube Video Player js -->
+<script src="js/YTPlayer.min.js"></script>
+
+<!---<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9KNSL1jTv4MY9Pza6w8DJkpI_nHyCnk" type="text/javascript"></script>--->
+
+<!-- GOOGLE ACTIVE JS -->
+
+
+<!-- Active js -->
+<script src="js/custom.js"></script>
+
+</body>
+
+</html>
