@@ -1,0 +1,331 @@
+.nivoSlider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden
+}
+
+.nivoSlider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: none
+}
+
+.nivo-main-image {
+    display: block!important;
+    position: relative!important;
+    width: 100%!important
+}
+
+.nivoSlider a.nivo-imageLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 6;
+    display: none;
+    background: white;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+}
+
+.nivo-slice {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    height: 100%;
+    top: 0
+}
+
+.nivo-box {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    overflow: hidden
+}
+
+.nivo-box img {
+    display: block
+}
+
+.nivo-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+    z-index: 8;
+    padding: 5px 10px;
+    overflow: hidden;
+    display: none;
+    -moz-opacity: .8;
+    filter: alpha(opacity=8);
+    box-sizing: border-box
+}
+
+.nivo-caption p {
+    padding: 5px;
+    margin: 0
+}
+
+.nivo-caption a {
+    display: inline!important
+}
+
+.nivo-html-caption {
+    display: none
+}
+
+.nivo-directionNav a {
+    cursor: pointer;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    z-index: 9
+}
+
+.nivo-prevNav {
+    left: 0
+}
+
+.nivo-nextNav {
+    right: 0
+}
+
+.nivo-controlNav {
+    text-align: center;
+    padding: 15px 0
+}
+
+.nivo-controlNav a {
+    cursor: pointer
+}
+
+.nivo-controlNav a.active {
+    font-weight: 700
+}
+
+.slider-direction {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: none;
+    color: #fff;
+    font-size: 16px;
+    z-index: 999;
+    display: none
+}
+
+.nivoSlider a.nivo-imageLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 6;
+    display: none;
+    background: white;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+}
+
+.nivo-slice {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    height: 100%;
+    top: 0
+}
+
+.nivo-box {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    overflow: hidden
+}
+
+.nivo-box img {
+    display: block
+}
+
+.nivo-caption {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 8
+}
+
+.nivo-main-image {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important
+}
+
+.nivo-slice {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    height: 100%;
+    top: 0
+}
+
+.nivo-box {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    overflow: hidden
+}
+
+@-webkit-keyframes myfirst {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+@keyframes myfirst {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+.slider-progress.pos_hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused
+}
+
+.d-table {
+    display: table;
+    height: 100%;
+    width: 100%;
+    float: left
+}
+
+.d-table-c {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.text-left {
+    text-align: left
+}
+
+.text-right {
+    text-align: right
+}
+
+.educamp .slider-content.slider-1 h2 {
+     -webkit-animation: fadeInRight 1000ms ease-in-out;
+    animation: fadeInRight 1000ms ease-in-out;
+}
+
+.educamp .slider-content.slider-2 h2 {
+    -webkit-animation: fadeInLeft 1000ms ease-in-out;
+    animation: fadeInLeft 1000ms ease-in-out;
+}
+
+.educamp .slider-content.slider-1 h3 {
+    -webkit-animation: fadeInRight 1500ms ease-in-out;
+    animation: fadeInRight 1500ms ease-in-out;
+}
+
+.educamp .slider-content.slider-2 h3 {
+    -webkit-animation: fadeInLeft 1500ms ease-in-out;
+    animation: fadeInLeft 1500ms ease-in-out;
+}
+
+.educamp .slider-content.slider-1 a,
+.educamp .slider-content.slider-2 a {
+    -webkit-animation: bounceInDown 2000ms ease-in-out;
+    animation: bounceInDown 2000ms ease-in-out;
+}
+
+.educamp .layer-1 img {
+    -webkit-animation: fadeInLeft 1500ms ease-in-out;
+    animation: fadeInLeft 1500ms ease-in-out
+}
+
+.educamp .layer-2 img {
+    -webkit-animation: fadeInRight 1500ms ease-in-out;
+    animation: fadeInRight 1500ms ease-in-out
+}
+
+
+.edu-c.edu-d.edu-pre {
+    position: relative
+}
+
+.edu-pre .nivoSlider:hover .nivo-directionNav a.nivo-prevNav {
+    left: 15px
+}
+
+.edu-pre .nivoSlider:hover .nivo-directionNav a.nivo-nextNav {
+    right: 65px
+}
+
+.edu-pre .nivoSlider .nivo-directionNav a.nivo-prevNav {
+    left: -34px;
+    font-size: 0
+}
+
+.edu-pre .nivoSlider .nivo-directionNav a.nivo-nextNav {
+    right: 16px;
+    font-size: 0
+}
+
+.edu-pre .nivo-controlNav {
+    position: absolute;
+    z-index: 99999;
+    bottom: 15px;
+    width: 100%;
+    text-align: center
+}
+
+.edu-pre .nivo-controlNav a {
+    border: 5px solid #fff;
+    display: inline-block;
+    height: 18px;
+    margin: 0 5px;
+    text-indent: -9999px;
+    width: 18px;
+    line-height: 8px;
+    background: #f6f6f6;
+    cursor: pointer;
+    position: relative;
+    z-index: 9;
+    border-radius: 100%;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    z-index: -999
+}
+
+.edu-pre:hover .nivo-controlNav a {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    z-index: 999999
+}
+
+.edu-pre .nivo-controlNav a:hover,
+.edu-pre .nivo-controlNav a.active {
+    background: #e67e22;
+    cursor: pointer
+}
