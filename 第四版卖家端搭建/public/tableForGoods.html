@@ -1,0 +1,346 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Proton - Admin Template</title>		
+		
+		<!-- Import google fonts - Heading first/ text second -->
+        <link rel='stylesheet' type='text/css' href='http://fonts.useso.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />
+        <!--[if lt IE 9]>
+<link href="http://fonts.useso.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+<link href="http://fonts.useso.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+<link href="http://fonts.useso.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+<link href="http://fonts.useso.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+		<!-- Favicon and touch icons -->
+		<link rel="shortcut icon" href="assets/ico/favicon.ico" type="image/x-icon" />
+
+	    <!-- Css files -->
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet">		
+		<link href="assets/css/jquery.mmenu.css" rel="stylesheet">		
+		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link href="assets/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+	    <link href="assets/css/style.min.css" rel="stylesheet">
+		<link href="assets/css/add-ons.min.css" rel="stylesheet">
+
+	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+</head>
+
+<body>
+	<!-- start: Header -->
+	<div class="navbar" role="navigation">
+	
+		<div class="container-fluid">		
+			
+			<ul class="nav navbar-nav navbar-actions navbar-left">
+				<li class="visible-md visible-lg"><a href="table.html#" id="main-menu-toggle"><i class="fa fa-th-large"></i></a></li>
+				<li class="visible-xs visible-sm"><a href="table.html#" id="sidebar-menu"><i class="fa fa-navicon"></i></a></li>			
+			</ul>
+			
+			<form class="navbar-form navbar-left">
+				<button type="submit" class="fa fa-search"></button>
+				<input type="text" class="form-control" placeholder="搜索..."></a>
+			</form>
+			
+	        <ul class="nav navbar-nav navbar-right">
+				
+				<li class="dropdown visible-md visible-lg">
+	        		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="user-avatar" src="assets/img/avatar.jpg" alt="user-mail">jhonsmith@mail.com</a>
+	        		<ul class="dropdown-menu">
+						<li class="dropdown-menu-header">
+							<strong>Account</strong>
+						</li>						
+						<li><a href="page-profile.html"><i class="fa fa-user"></i> Profile</a></li>
+						<li><a href="page-login.html"><i class="fa fa-wrench"></i> Settings</a></li>
+						<li><a href="page-invoice.html"><i class="fa fa-usd"></i> Payments <span class="label label-default">10</span></a></li>
+						<li><a href="gallery.html"><i class="fa fa-file"></i> File <span class="label label-primary">27</span></a></li>
+						<li class="divider"></li>						
+						<li><a href="index.html"><i class="fa fa-sign-out"></i> Logout</a></li>	
+	        		</ul>
+	      		</li>
+				<li><a href="index.html"><i class="fa fa-power-off"></i></a></li>
+			</ul>
+			
+		</div>
+		
+	</div>
+	<!-- end: Header -->
+	
+	<div class="container-fluid content">
+	
+		<div class="row">
+				
+			<!-- start: Main Menu -->
+			<div class="sidebar ">
+								
+				<div class="sidebar-collapse">
+					<div class="sidebar-header t-center">
+                        <span><img class="text-logo" src="assets/img/logo1.png"><i class="fa fa-space-shuttle fa-3x blue"></i></span>
+                    </div>										
+					<div class="sidebar-menu">						
+						<ul class="nav nav-sidebar">
+							<li>
+								<a href="#"><i class="fa fa-file-text"></i><span class="text"> 商铺管理</span> <span class="fa fa-angle-down pull-right"></span></a>
+								<ul class="nav sub">
+									<li><a href="page-profile.html"><i class="fa fa-car"></i><span class="text"> 我要开店</span></a></li>
+									<li><a href="page-profile.html"><i class="fa fa-envelope"></i><span class="text"> 店铺信息</span></a></li>
+									<li><a href="page-profile.html"><i class="fa fa-credit-card"></i><span class="text"> 修改店铺信息</span></a></li>						
+								</ul>	
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-list-alt"></i><span class="text"> 交易</span> <span class="fa fa-angle-down pull-right"></span></a>
+								<ul class="nav sub">
+									<li><a href="table.html"><i class="fa fa-indent"></i><span class="text"> 已卖出</span></a></li>
+									<li><a href="table.html"><i class="fa fa-tags"></i><span class="text"> 评价管理</span></a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-signal"></i><span class="text"> 物流</span> <span class="fa fa-angle-down pull-right"></span></a>
+								<ul class="nav sub">
+									<li><a href="table.html"><i class="fa fa-random"></i><span class="text"> 发货</span></a></li>
+									<li><a href="table.html"><i class="fa fa-retweet"></i><span class="text"> 物流工具</span></a></li>
+									<li><a href="table.html"><i class="fa fa-bar-chart-o"></i><span class="text"> 物流服务</span></a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-briefcase"></i><span class="text"> 商品管理</span> <span class="fa fa-angle-down pull-right"></span></a>
+								<ul class="nav sub">
+									<li><a href="form-elements.html"><i class="fa fa-align-left"></i><span class="text"> 发布商品</span></a></li>
+									<li><a href="tableForGoods.html"><i class="fa fa-outdent"></i><span class="text"> 出售中的商品</span></a></li>
+									<li><a href="table.html"><i class="fa fa-list"></i><span class="text"> 仓库中的商品</span></a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-bolt"></i><span class="text"> 客户服务</span> <span class="fa fa-angle-down pull-right"></span></a>
+								<ul class="nav sub">									
+									<li><a href="table.html"><i class="fa fa-meh-o"></i><span class="text"> 退款</span></a></li>
+									<li><a href="table.html"><i class="fa fa-meh-o"></i><span class="text"> 售后</span></a></li>
+									<li><a href="table.html"><i class="fa fa-meh-o"></i><span class="text"> 举报</span></a></li>
+									<li><a href="table.html"><i class="fa fa-meh-o"></i><span class="text"> 咨询回复</span></a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>					
+				</div>
+				<div class="sidebar-footer">					
+					
+					<div class="sidebar-brand">
+						商家
+					</div>
+					
+					
+					
+					<div class="copyright text-center">
+						<small>商家 <i class="fa fa-coffee"></i> 管理</small>
+					</div>					
+				</div>	
+				
+			</div>
+			<!-- end: Main Menu -->
+						
+		<!-- start: Content -->
+		<div class="main sidebar-minified">
+		
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa-table"></i>商品列表</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="index.html">主页</a></li>			  	
+						<li><i class="fa fa-table"></i>商品列表</li>				
+					</ol>
+				</div>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>商品信息</strong></h2>
+							<div class="panel-actions">
+								<a href="table.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+								<a href="table.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+								<a href="table.html#" class="btn-close"><i class="fa fa-times"></i></a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<table class="table table-striped">
+								  <thead>
+									  <tr>
+									      <th>图片</th>
+										  <th>商品名称</th>
+                                          <th>价格</th>
+                                          <th>所属分类</th>
+										  <th>创建时间</th>         
+										  <th>状态</th>    	
+										  <th>库存量</th>    
+									  </tr>
+								  </thead>   
+								  <tbody>
+									<tr>
+									    <td><img style="width:50px;height:50px"src="assets/img/yinpin.png"></td>
+										<td style="vertical-align:middle">香浓拿铁 </td>
+                                        <td style="vertical-align:middle">￥45</td>
+                                        <td style="vertical-align:middle">饮品</td>
+										<td style="vertical-align:middle">2016.01.01</td>
+										<td style="vertical-align:middle">
+											<span class="label label-success">出售中</span>
+										</td>    
+										<td style="vertical-align:middle">20</td>		
+									</tr>
+									<tr>
+									    <td><img style="width:50px;height:50px"src="assets/img/mianbao.png"></td>
+										<td style="vertical-align:middle">香烤牛角包 </td>
+                                        <td style="vertical-align:middle">￥50</td>
+                                        <td style="vertical-align:middle">面包</td>
+										<td style="vertical-align:middle">2016.05.01</td>
+										<td style="vertical-align:middle">
+											<span class="label label-success">出售中</span>
+										</td>        
+										<td style="vertical-align:middle">40</td>
+									</tr>
+									<tr>
+									    <td><img style="width:50px;height:50px"src="assets/img/dangao.png"></td>
+										<td style="vertical-align:middle">冰激凌蛋糕</td>
+                                        <td style="vertical-align:middle">￥100</td>
+                                        <td style="vertical-align:middle">蛋糕</td>
+										<td style="vertical-align:middle">2016.05.05</td>
+										<td style="vertical-align:middle">
+											<span class="label label-success">出售中</span>
+										</td>       
+										<td style="vertical-align:middle">30</td>
+									</tr>
+									<tr>
+									    <td><img style="width:50px;height:50px"src="assets/img/dangao2.png"></td>
+										<td style="vertical-align:middle">杯子蛋糕 </td>
+                                        <td style="vertical-align:middle">￥59</td>
+                                        <td style="vertical-align:middle">蛋糕</td>
+										<td style="vertical-align:middle">2016.05.05</td>
+										<td style="vertical-align:middle">
+											<span class="label label-success">出售中</span>
+										</td>  
+                                        <td style="vertical-align:middle">48</td>
+									</tr>		
+									<tr>
+									    <td><img style="width:50px;height:50px"src="assets/img/taocan.png"></td>
+										<td style="vertical-align:middle">咖啡配蛋糕下午茶</td>
+                                        <td style="vertical-align:middle">￥119</td>
+                                        <td style="vertical-align:middle">套餐</td>
+										<td style="vertical-align:middle">2015.12.25</td>
+										<td style="vertical-align:middle">
+											<span class="label label-success">出售中</span>
+										</td>     
+										<td style="vertical-align:middle">33</td>
+									</tr>
+								  </tbody>
+							 </table>  
+							 <ul class="pagination">
+								<li><a href="tableForGoods.html">上一页</a></li>
+								<li class="active">
+								  <a href="tableForGoods.html">1</a>
+								</li>
+								<li><a href="tableForGoods.html">2</a></li>
+								<li><a href="tableForGoods.html">3</a></li>
+								<li><a href="tableForGoods.html">4</a></li>
+								<li><a href="tableForGoods.html">5</a></li>
+								<li><a href="tableForGoods.html">下一页</a></li>
+							  </ul>     
+						</div>
+					</div>
+				</div><!--/col-->
+			</div><!--/row-->
+			
+			
+   
+		</div>
+		<!-- end: Content -->
+		<br><br><br>		
+
+		
+		
+				
+		
+	</div><!--/container-->
+		
+	
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<p>Here settings can be configured...</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<div class="clearfix"></div>
+	
+		
+	<!-- start: JavaScript-->
+	<!--[if !IE]>-->
+
+			<script src="assets/js/jquery-2.1.1.min.js"></script>
+
+	<!--<![endif]-->
+
+	<!--[if IE]>
+	
+		<script src="assets/js/jquery-1.11.1.min.js"></script>
+	
+	<![endif]-->
+
+	<!--[if !IE]>-->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.1.1.min.js'>"+"<"+"/script>");
+		</script>
+
+	<!--<![endif]-->
+
+	<!--[if IE]>
+	
+		<script type="text/javascript">
+	 	window.jQuery || document.write("<script src='assets/js/jquery-1.11.1.min.js'>"+"<"+"/script>");
+		</script>
+		
+	<![endif]-->
+	<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>	
+	
+	
+	<!-- page scripts -->
+	<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
+	<script src="assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="assets/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+	
+	<!-- theme scripts -->
+	<script src="assets/js/SmoothScroll.js"></script>
+	<script src="assets/js/jquery.mmenu.min.js"></script>
+	<script src="assets/js/core.min.js"></script>
+	
+	<!-- inline scripts related to this page -->
+	<script src="assets/js/pages/table.js"></script>
+	
+	<!-- end: JavaScript-->
+	
+</body>
+</html>
