@@ -1,0 +1,49 @@
+﻿<div ng-app="ngRouteExample" ng-controller="SearchGoodsController">
+<section class="what_we_do_area section_padding_100_70" id="cake">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- Section Heading Start -->
+				<div class="section_heading">
+					<p>搜索结果</p>
+				</div>
+				<!-- Section Heading End -->
+			</div>
+		</div>
+
+		<div class="row">
+
+			<!-- Single Service Area Start -->
+			<div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="x in product">
+				<div class="single_service wow fadeInUp" data-wow-delay=".2s">
+					<!-- Single Service image -->
+					<div class="single_service_img">
+						<img ng-src="{{x.productImage}}">
+					</div>
+					<!-- Single Service title -->
+					<div class="single_service_title">
+						<h4>{{x.productName}}</h4>
+					</div>
+					<!-- Single Service content -->
+					<div class="single_service_content">
+						<div class="table">
+							<div class="table_cell">
+								<p>{{x.productIntroduction}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="learn_more">
+						<a data-target="#service_details" data-toggle="modal" ng-click="addToCart(x)"><h4>加入购物车</h4></a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Single Service Area Start -->
+		</div>
+		<!-- end. row -->
+	</div>
+	<!-- end. container -->
+</section>
+</div>
+<!-- ************** cake End ************** -->
+

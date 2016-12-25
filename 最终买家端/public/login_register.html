@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!-- Title  -->
+	<title>Biz Onepage Business HTML Template</title>
+
+	<!-- Favicon  -->
+	<link rel="shortcut icon" href="img/core-img/favicon.ico">
+
+	<!-- ************** All CSS Files ************** -->
+
+	<!-- Style css -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Responsive css -->
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!--[if IE]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<link href="css/style4.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+
+	<script type="text/javascript">
+        angular.module('ngRouteExample', ['ngRoute'])
+            .controller('LoginController', function ($scope, $route) { $scope.$route = $route;})
+            .controller('RegisterController', function ($scope, $route) { $scope.$route = $route;})
+
+
+            .config(function ($routeProvider) {
+                $routeProvider.
+                when('/register', {
+                    templateUrl: 'register.html',
+                    controller: 'CookieController'
+                }).
+                when('/login', {
+                    templateUrl: 'login.html',
+                    controller: 'BreadController'
+                }).
+                otherwise({
+                    redirectTo: '/login'
+                });
+            });
+	</script>
+
+	<script>
+        function test() {
+            var username=document.getElementById("username").value;
+            var phone=document.getElementById("phone").value;
+            var email=document.getElementById("email").value;
+            var password=document.getElementById("password").value;
+            $.ajax({
+                type: 'post',
+                url:'http://localhost:8080/api/users',
+                data:{'username':username,
+                    'phone':phone,
+                    'email':email,
+                    'password':password},
+                success:function(data,textStatus)
+                {
+                    console.log("data:"+data);
+                    if(data['message']=="OK")
+                    {
+                        console.log("userName："+username);
+                        window.location.href="http://localhost:8080/index.html?loginUser="+username;
+                    }else
+                    {
+                        alert("错了傻逼");
+                    }
+                }
+            });
+            return false
+        }
+        function login() {
+            var email=document.getElementById("login_email").value;
+            var password=document.getElementById("login_password").value;
+            $.ajax({
+                type: 'post',
+                url:'http://localhost:8080/api/login',
+                data:{'email':email,
+                    'password':password},
+                success:function(data,textStatus)
+                {
+                    console.log("data:"+data);
+                    if(!isEmptyObject(data))
+                    {
+                        window.location.href="http://localhost:8080/index.html?loginUser="+data[0].username;
+                    }else
+                    {
+                        alert("密码输入错误！");
+                    }
+                }
+            });
+            return false
+        }
+	</script>
+
+	<script type="text/javascript">
+        function isEmptyObject(e) {
+            var t;
+            for (t in e)
+                return !1;
+            return !0
+        }
+        function checkEmail(){
+            var email=document.getElementById("email").value;
+            var myreg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$');
+            var ret_test = myreg.test(email);
+            if(!ret_test)
+            {
+                document.getElementById("emailAlert").innerHTML="请输入正确的邮箱地址！";
+                myreg.focus();
+                return false;
+            }
+            else{
+                document.getElementById("emailAlert").innerHTML="";
+                $.ajax(
+                    {
+                        type: 'post',
+                        url:'http://localhost:8080/api/checkEmail',
+                        data:{'email':email},
+                        success:function(data,textStatus)
+                        {
+                            if(!isEmptyObject(data))
+                            {
+                                document.getElementById("emailAlert").innerHTML="该邮箱已被注册！";
+                            }
+                            else
+                            {
+                                document.getElementById("emailAlert").innerHTML="";
+                            }
+
+                        },
+                        error:function(data)
+                        {
+                            console.log("error"+data)
+                            alert(data)
+                        }
+                    });
+                return false
+            }
+        }
+        function checkPassword(){
+            var password=document.getElementById("password").value;
+            var re_password=document.getElementById("re_password").value;
+            if(password != re_password)
+            {
+                document.getElementById("passwordAlert").innerHTML="输入的密码不一致！";
+                return false;
+            }
+            else{
+                document.getElementById("passwordAlert").innerHTML="";
+            }
+
+        }
+        function checkPhone(){
+            var phone=document.getElementById("phone").value;
+
+            var reg = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+
+            if(reg.test(phone))
+            {
+                document.getElementById("phoneAlert").innerHTML="";
+                myreg.focus();
+                return false;
+            }else{
+                document.getElementById("phoneAlert").innerHTML="请输入正确的手机号！";
+                myreg.focus();
+                return false;
+            }
+
+        }
+        function login_checkEmail(){
+            var email=document.getElementById("login_email").value;
+            var myreg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$');
+            var ret_test = myreg.test(email);
+            if(!ret_test)
+            {
+                document.getElementById("login_emailAlert").innerHTML="请输入正确的邮箱地址！";
+                myreg.focus();
+                return false;
+            }
+            else{
+                document.getElementById("login_emailAlert").innerHTML="";
+                $.ajax(
+                    {
+                        type: 'post',
+                        url:'http://localhost:8080/api/checkEmail',
+                        data:{'email':email},
+                        success:function(data,textStatus)
+                        {
+                            if(!isEmptyObject(data))
+                            {
+                                document.getElementById("login_emailAlert").innerHTML="";
+                            }
+                            else
+                            {
+                                document.getElementById("login_emailAlert").innerHTML="该账户不存在！";
+                            }
+
+                        },
+                        error:function(data)
+                        {
+                            console.log("error"+data)
+                            alert(data)
+                        }
+                    });
+                return false
+            }
+        }
+        function login_checkPassword(){
+            var password=document.getElementById("login_password").value;
+
+            if(isEmptyObject(password))
+            {
+                document.getElementById("login_passwordAlert").innerHTML="密码不能为空！";
+                myreg.focus();
+                return false;
+            }else{
+                document.getElementById("login_passwordAlert").innerHTML="";
+                myreg.focus();
+                return false;
+            }
+
+        }
+	</script>
+
+
+</head>
+
+<body ng-app="ngRouteExample" class="ng-scope">
+<!-- preloader start -->
+<div id="preloader"></div>
+
+<div class="container">
+	<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+		<ul class="nav navbar-nav nav_1">
+			<li><a  class="color" href="#/register">注册</a></li>
+			<li><a class="color" href="#/login">登录</a></li>
+		</ul>
+	</div>
+
+
+</div>
+<!-- /.end preloader -->
+
+
+<div ng-view="">
+
+
+</div>
+
+<!-- ************** Footer Area Start ************** -->
+<footer class="footer_area">
+	<!-- Bottom Footer Area Start -->
+	<div class="footer_bottom_area">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="footer_bottom wow fadeInDown" data-wow-delay=".2s">
+						<p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">GoEat</a></p>
+					</div>
+					<!-- Bottom Footer Copywrite Text Area End -->
+				</div>
+			</div>
+			<!-- end./ row -->
+		</div>
+		<!-- end./ container -->
+	</div>
+	<!-- Bottom Footer Area End -->
+</footer>
+<!-- ************** Footer Area End ************** -->
+
+<!-- ************** All jQuery Plugins ************** -->
+
+<!-- jQuery (necessary for all JavaScript plugins) -->
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Waypoint js -->
+<script src="js/jquery.waypoints.min.js"></script>
+
+<!-- Owl-carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+
+<!-- Ajax Contact js -->
+<script src="js/ajax-contact.js"></script>
+
+<!-- Meanmenu js -->
+<script src="js/meanmenu.js"></script>
+
+<!-- Onepage Nav js -->
+<script src="js/jquery.nav.min.js"></script>
+
+<!-- Magnific Popup js -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+
+<!-- Counterup js -->
+<script src="js/counterup.min.js"></script>
+
+<!-- Back to top js -->
+<script src="js/jquery.scrollUp.js"></script>
+
+<!-- jQuery easing js -->
+<script src="js/jquery.easing.1.3.js"></script>
+
+<!-- Sticky js -->
+<script src="js/jquery.sticky.js"></script>
+
+<!-- WOW js -->
+<script src="js/wow.min.js"></script>
+
+<!-- parallux js -->
+<script src="js/jquery.stellar.min.js"></script>
+
+<!-- YouTube Video Player js -->
+<script src="js/YTPlayer.min.js"></script>
+
+<!---<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9KNSL1jTv4MY9Pza6w8DJkpI_nHyCnk" type="text/javascript"></script>--->
+
+<!-- GOOGLE ACTIVE JS -->
+<script src="js/map-active.js"></script>
+
+<!-- Active js -->
+<script src="js/custom.js"></script>
+
+
+
+</body>
+
+</html>

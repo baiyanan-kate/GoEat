@@ -1,0 +1,58 @@
+﻿<!-- ************** cart Start 购物车************** -->
+<div ng-app="ngRouteExample" ng-controller="CartController">
+	<section class="what_we_do_area section_padding_100_70" id="cart">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- Section Heading Start -->
+					<div class="section_heading">
+						<h3>购物车</h3>
+					</div>
+					<!-- Section Heading End -->
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="check-out">
+					<div class="bs-example4" data-example-id="simple-responsive-table">
+						<div class="table-responsive">
+							<table class="table-heading simpleCart_shelfItem">
+								<tr>
+									<th>选择</th>
+									<th class="table-grid">项目</th>
+									<th>价格</th>
+									<th>数量</th>
+									<!--<th >运费 </th>-->
+									<th>总计</th>
+								</tr>
+
+								<tr class="cart-header" ng-repeat="x in userCart">
+									<td><input type="checkbox"></td>
+									<td class="ring-in"><a  class="at-in"><img ng-src="{{x.productImage}}"  class="img-responsive" alt=""></a>
+										<div class="sed">
+											<h5><a id="productname">{{x.productname}}</a></h5>
+
+										</div>
+										<div class="clearfix" > </div>
+										<div class="close1" ng-click="deleteCart(x.productname)" > </div></td>
+									<td>{{x.productPrice}}</td>
+									<td>
+										<div class="quantity-select">
+											<span>{{x.productNum}}</span>
+										</div></td>
+									<!--<td>{{x.productCarriage}}</td>-->
+									<td class="item_price">{{ x.productPrice * x.productNum}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="produced">
+						<a href="#" class="hvr-skew-backward">付款</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end. container -->
+	</section>
+</div>
+<!-- ************** cart End ************** -->
